@@ -1,28 +1,31 @@
 const express = require('express')
+const expressHandlebars = require('express-handlebars')
 const app = express()
 const port = process.env.PORT || 3000
 
+app.engine('handlebars', expressHandlebars({
+    defaultLayout: 'main'
+}))
+
+app.set('view engine', 'handlebars')
+
 app.get('/', (req, res) => {
-    res.type('text/plain')
-    res.send('Home')
+    res.render('home')
 })
 
 app.get('/about', (req, res) => {
-    res.type('text/plain')
-    res.send('About')
+    res.render('about')
 })
 
 app.use((req, res) => {
-    res.type('text/plain')
     res.status(404)
-    res.send('Not found')
+    res.render('404')
 })
 
 app.use((err, req, res, next) => {
     console.error(err.mesage)
-    res.type('text/plain')
     res.status(500)
-    res.send('Server error')
+    res.render('500')
 })
 
 app.listen(port, () => console.log(`Server is listening port ${port}`))

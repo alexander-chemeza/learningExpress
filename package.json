@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/alexander-chemeza/learningExpress/issues"
   },
-  "homepage": "https://github.com/alexander-chemeza/learningExpress#readme"
+  "homepage": "https://github.com/alexander-chemeza/learningExpress#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
